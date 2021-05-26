@@ -1,5 +1,5 @@
   
-import {SET_AUTHED_USER,CLEAR_AUTHED_USER } from '../constants'
+import {SET_AUTHED_USER} from '../constants'
 
 export function setAuthedUser(userId) {
   return {
@@ -8,8 +8,3 @@ export function setAuthedUser(userId) {
   }
 }
 
-export function clearAuthedUser() {
-  return {
-    type: CLEAR_AUTHED_USER,
-  }
-}

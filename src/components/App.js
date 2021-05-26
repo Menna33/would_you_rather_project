@@ -1,10 +1,10 @@
 import React from 'react';
+import LoadingBar from 'react-redux-loading';
 import Nav from './Nav';
 import DashBoard from './DashBoard';
 import NewQuestion from './NewQuestion';
+import QuestionInfo from './QuestionInfo';
 import Login from './Login';
-//import Logout from './Logout';
-//import ProtectedRoute from './ProtectedRoute';
 import PageNotFound from './PageNotFound';
 import LeaderBoard from './LeaderBoard';
 import {connect} from 'react-redux';
@@ -17,31 +17,34 @@ class APP extends React.Component {
     	this.props.dispatch(handleInitialData())
 	}
 render(){
+  const {loadingFlag,loggedOut}=this.props
   console.log('this.props: ',this.props)
-   const {authedUser}=this.props
     return (
- <div>
-<Nav/>
-{authedUser===null?<Login/>:
-<div>
-<Router>
+      <div>
+      <div>
+      {!loadingFlag &&(<div>
+        <Nav/>
+{loggedOut?(<Login/>):
+(<div>
+
 <Switch>
-<Route path="/home" render={() =>( <DashBoard/>)} />
-<Route path="/leaderboard" render={() =>( <LeaderBoard/>)} />
-<Route path="/add" render={() =>( <NewQuestion/>)} />
-<Route component={PageNotFound} />
+<Route exact path="/home"><DashBoard /></Route>
+<Route exact path="/leaderboard"><LeaderBoard /></Route>
+<Route exact path="/add"> <NewQuestion /></Route>
+<Route  path='/question/:questionID'> <QuestionInfo /></Route>
+<Route  exact path="/not-found" > <PageNotFound /></Route>
  </Switch>
- </Router>
- </div>
+
+ </div>)
 }
+ </div>) }
  </div>
-  )}}
-function mapStateToProps(state)
+ </div>)}}
+function mapStateToProps({authedUser})
 {
-  const {authedUser} = state
-  console.log('state ',state)
   return {
-    authedUser
+    loadingFlag:authedUser===null,
+    loggedOut:authedUser==="LoggedOut"
   }
     
 }   

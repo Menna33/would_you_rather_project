@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import User from './User'
 
 class LeaderBoard extends React.Component {
    
 
 render(){ 
     console.log('this.props  dkdkk : ' ,this.props)
-    const {usersIds,users} = this.props 
-    const users_scores=usersIds.map( (userId) => userId.score = Object.keys(userId.answers).length + userId.questions.length )
+    const {users_scores,users} = this.props 
     console.log('users_scores : ',users_scores)
-    const sortedUsers = users_scores.sort( (a, b) => b.totalScore - a.totalScore) 
+    const sortedUsers = users_scores.sort( (a, b) => b.score - a.score)
+    console.log('sortedUsers : ',sortedUsers) 
     return (
-
-<div></div>
+<div>
+{sortedUsers.map(user => <User user={user} users={users}/>)}
+</div>
     )}}
 
 
@@ -21,7 +23,11 @@ render(){
 
 function mapStateToProps({users}) {
         return {
-            usersIds: Object.keys(users),
+            users_scores:Object.keys(users).map( (userId) => 
+            ({
+                userId,
+                score:Object.keys(users[userId].answers).length + users[userId].questions.length
+            })  ),
             users
         }
       }

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/form.css'
-import { setAuthedUser, clearAuthedUser } from '../actions/authedUser.action';
+import { setAuthedUser } from '../actions/authedUser.action';
 import {getUsers} from '../actions/users.action'
 import {connect} from 'react-redux';
 import Nav from './Nav';
@@ -11,7 +11,6 @@ class Login extends React.Component {
     };
     componentDidMount() {
         console.log('this.props: ',this.props)
-		this.props.dispatch(clearAuthedUser())
         this.props.dispatch(getUsers())
 	}
     handleChange = function(e) {
