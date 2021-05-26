@@ -16,11 +16,11 @@ export function addQuestion(question) {
   }
 }
 
-export function handleAddQuestion({ optionOneText, optionTwoText, author }) {
+export function handleAddQuestion({ optionOneText, optionTwoText, auther }) {
   return (dispatch) => {
-    return _saveQuestion({ optionOneText, optionTwoText, author }).then(
+    return _saveQuestion({ optionOneText, optionTwoText, auther }).then(
       (question) => {
-        dispatch(userAddQuestion({ authedUser: author, qid: question.id }))
+        dispatch(userAddQuestion({ authedUser: auther, qid: question.id }))
         dispatch(addQuestion(question))
       }
     )

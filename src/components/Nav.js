@@ -1,14 +1,14 @@
 import React from 'react';
 import {NavLink, BrowserRouter as Router,Link} from 'react-router-dom';
 import { Navbar} from 'react-bootstrap'
+import { setAuthedUser } from '../actions/authedUser.action';
 import { connect } from 'react-redux'
-import {clearAuthedUser } from '../actions/authedUser.action';
 import '../styles/navbar.css'
 
 class Nav extends React.Component {
-   handleLogout=function()
+   handleLogout=()=>
        {
-        this.props.dispatch(clearAuthedUser())
+        this.props.dispatch(setAuthedUser("LoggedOut"))
        }
 render(){
        const { user, authedUser } = this.props
@@ -20,14 +20,14 @@ render(){
            
 <Navbar bg="primary" variant="dark">
 <ul className="navbar">
-             <NavLink to='/home' exact activeClassName='active'
+             <NavLink to='/home'  activeClassName='active'
                     className="nav-link">DashBoard</NavLink>
-             <NavLink to='/add' exact activeClassName='active'
+             <NavLink to='/add'  activeClassName='active'
                     className="nav-link">New Question</NavLink>
-              <NavLink to='/leaderboard' exact activeClassName='active'
+              <NavLink to='/leaderboard'  activeClassName='active'
                      className="nav-link">Leaderboard</NavLink>
-              <li className="user-nav">
-              <img src={user ?user.avatarURL :''} className="nav-img"/>  {/* el sora msh matloba mmkn ashelha lo masht8ltsh*/ }
+              <li className="user-nav">   
+              <img src={user ?`/${user.avatarURL}` :''} className="nav-img"/>  {/* el sora msh matloba mmkn ashelha lo masht8ltsh*/ }
               <span>{user ? user.name : 'signedOut'}</span>
                 <button type="button" onClick={this.handleLogout}>Log Out</button> </li>     
         </ul>
