@@ -1,0 +1,28 @@
+.user-box {
+    background-color: lightgrey;
+    width: 500px;
+    height:200px;
+    border: 10px solid black;
+    padding: 50px;
+    margin: 20px;
+  }
+
+.user-img
+{
+  float:left;
+  height:80%;
+  width:20%;
+  padding:5px 20px;
+}
+
+.user-info
+{
+  /*float:right;*/  
+  position: relative;
+    width: 60%;
+    height: 80px;
+    margin: auto;
+    /*margin-top: 25%;*/
+    background-color: transparent;
+}
+  

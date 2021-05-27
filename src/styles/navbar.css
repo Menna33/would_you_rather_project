@@ -1,0 +1,39 @@
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 90%;
+    list-style-type: none;
+  }
+  
+  .nav-link {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 22px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .user-nav{
+    float: right; 
+    text-align: center;
+    padding: 22px 16px 20px 20px;
+    font-size: 17px;
+    text-decoration: none;
+    color: #f2f2f2;
+  }
+  .nav-item{
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+  }
+  .nav-img{
+      width:fit-content;
+      height:fit-content;
+  }
+  .navbar a:hover {
+    background: #ddd;
+    color: black;
+  }
