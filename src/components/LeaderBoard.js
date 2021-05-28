@@ -13,7 +13,7 @@ render(){
     console.log('sortedUsers : ',sortedUsers) 
     return (
 <div>
-{sortedUsers.map(user => <User user={user} users={users}/>)}
+{sortedUsers.map((i,user) => <User key={i} user={user} users={users}/>)}
 </div>
     )}}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, BrowserRouter as Router,Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import { Navbar} from 'react-bootstrap'
 import { setAuthedUser } from '../actions/authedUser.action';
 import { connect } from 'react-redux'
@@ -15,7 +15,7 @@ render(){
        console.log('authedUser : ',authedUser)
        
     return (
-       <Router>
+       <div>
        {authedUser ? (
            
 <Navbar bg="primary" variant="dark">
@@ -27,7 +27,7 @@ render(){
               <NavLink to='/leaderboard'  activeClassName='active'
                      className="nav-link">Leaderboard</NavLink>
               <li className="user-nav">   
-              <img src={user ?`/${user.avatarURL}` :''} className="nav-img"/>  {/* el sora msh matloba mmkn ashelha lo masht8ltsh*/ }
+              <img  src={user ? user.avatarURL :''} alt={user? user.name :''} className="nav-img"/> 
               <span>{user ? user.name : 'signedOut'}</span>
                 <button type="button" onClick={this.handleLogout}>Log Out</button> </li>     
         </ul>
@@ -39,7 +39,7 @@ render(){
   
 </ul>
 )}
-  </Router>)}}
+  </div>)}}
 function mapStateToProps(state) 
 {
   const { users, authedUser } = state

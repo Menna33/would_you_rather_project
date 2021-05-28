@@ -3,7 +3,6 @@ import '../styles/form.css'
 import { setAuthedUser } from '../actions/authedUser.action';
 import {getUsers} from '../actions/users.action'
 import {connect} from 'react-redux';
-import Nav from './Nav';
 
 class Login extends React.Component {
     state = {
@@ -28,7 +27,6 @@ render(){
     const {usersIds,users} = this.props
     return (
         <div>
-            <Nav />
         <div className='mm'>
     <h2>Login</h2>
         <p>Please select the user.</p>

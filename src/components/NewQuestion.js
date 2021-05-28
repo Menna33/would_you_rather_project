@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import '../styles/new.css'
 import icon from '../images/project_icon.jpg'
 import {handleAddQuestion} from '../actions/questions.action'
-import {Redirect,BrowserRouter as Router} from 'react-router-dom'
-import authedUser from './../reducers/authedUser.reducer';
+import {Redirect} from 'react-router-dom'
 class NewQuestion extends React.Component {  
     state = {      
     	optionOneValue:'',
@@ -15,38 +14,41 @@ class NewQuestion extends React.Component {
         event.preventDefault();
         if(event.target.name==="optionOne")
          {
-             this.setState({OptionOneValue:event.target.value})
-             console.log('OptionOneValue: ',this.state.OptionOneValue)
+             this.setState({optionOneValue:event.target.value},()=>{console.log('OptionOneValue: ',this.state.OptionOneValue);
+             })
+                
+             //bi set el state wrong bi7otha fadia
+             
         }
         if(event.target.name==="optionTwo")
          {
-             this.setState({OptionTwoValue:event.target.value})
-             console.log('OptionTwoValue: ',this.state.OptionTwoValue)
+             this.setState({optionTwoValue:event.target.value},()=>{console.log('OptionTwoValue: ',this.state.OptionTwoValue)})
+           
     }
         }
     handleAddNew=(event)=>{
         event.preventDefault();
-      this.setState({redirct: true})
-      const { optionOneText, optionTwoText} = this.state 
-      console.log('this.state : ',this.state)
-      const {auther} =this.props
-     this.props.dispatch(handleAddQuestion({ optionOneText, optionTwoText, auther }))
+      const { optionOneValue, optionTwoValue} = this.state 
+      console.log('optionOneValue',optionOneValue)
+      const {authedUser} =this.props
+     this.props.dispatch(handleAddQuestion({ optionOneText:optionOneValue, optionTwoText:optionTwoValue,author: authedUser })) 
+     this.setState({redirct: true})
     }
 
 render(){
    const {redirct}=this.state
+   console.log('authedUser1 ',this.props.authedUser)
     if(redirct) 
     { 
-        return 
-        {<Router><Redirect to='/home' /></Router>}
+        return  <Redirect to='/home' />
     }
     return (
 <div className="new-container">
-<img src={icon} />
+<img src={icon} alt={"Would you rather"}/>
 <form>
-<label for="optionOne">Option One:</label>   
+<label >Option One:</label>   
 <input type="text" id="optionOne" name="optionOne"  onChange={this.handleInputChange}></input>
-<label for="optionTwo">Option Two:</label> 
+<label >Option Two:</label> 
 <input type="text" id="optionTwo" name="optionTwo" onChange={this.handleInputChange}></input>
   <input type="submit" value="Submit" onClick={this.handleAddNew}></input>
 </form>

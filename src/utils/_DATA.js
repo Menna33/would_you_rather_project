@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Favatarideas%2Ffemale-avatars%2F&psig=AOvVaw1IebVMbOBtUzuWIDOV02cj&ust=1621416141366000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCY7f7z0vACFQAAAAAdAAAAABAD' ,
+    avatarURL:'https://www.w3schools.com/howto/img_avatar2.png' ,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fmale%2Bavatar&psig=AOvVaw0zZPNnIjqcvFVZs0T60PRL&ust=1621416187275000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiS1JT00vACFQAAAAAdAAAAABAD',
+    avatarURL: 'https://www.w3schools.com/bootstrap4/img_avatar3.png',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shareicon.net%2Fyoung-man-user-avatar-male-person-103160&psig=AOvVaw0zZPNnIjqcvFVZs0T60PRL&ust=1621416187275000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiS1JT00vACFQAAAAAdAAAAABAJ' ,
+    avatarURL:'https://www.w3schools.com/bootstrap4/img_avatar3.png' ,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -132,6 +132,8 @@ export function _getQuestions () {
 }
 
 function formatQuestion ({ optionOneText, optionTwoText, author }) {
+  //console.log('optionOneText', optionOneText)
+  
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -165,7 +167,7 @@ export function _saveQuestion (question) {  //bt7ot el question fel array bta3t 
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-
+     console.log('formattedQuestion :',formattedQuestion)
       res(formattedQuestion)
     }, 1000)
   })

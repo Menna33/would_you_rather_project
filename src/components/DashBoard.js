@@ -1,17 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import {Button} from 'react-bootstrap'
-import QuestionInfo from './QuestionInfo';
+import Question from './Question';
+import '../styles/dashboard.css'
 
 class DashBoard extends React.Component {
     state=
     {
       answered:false
     }
-    handleChange = (answeredFlag) => {
-        this.setState(() => ({
-            answered: answeredFlag
-        }));
+    handleClickUnanswered = () => {
+        this.setState({
+            answered: false
+        });
+    }
+        handleClickanswered = () => {
+            this.setState({
+                answered: true
+            });
      
     }
 render(){ 
@@ -27,12 +33,12 @@ const filteredQuestions = Object.values(questions).filter(function(question) {
 console.log('filteredQuestions : ',filteredQuestions)
 const sortedQuestions = filteredQuestions.sort((a, b) => b.timestamp - a.timestamp);
 console.log('sortedQuestions : ',sortedQuestions) */
-
+console.log('Object.values(questions): ',Object.values(questions))
 const answeredQuestions=Object.values(questions).filter((question)=>
-    Object.keys(users[authedUser].answers).includes(question)).map((question) => Object.assign({}, question));
+    Object.keys(users[authedUser].answers).includes(question.id)).map((question) => Object.assign({}, question));
 
 const unansweredQuestions=Object.values(questions).filter((question)=>
-!Object.keys(users[authedUser].answers).includes(question)).map((question) => Object.assign({}, question));
+!Object.keys(users[authedUser].answers).includes(question.id)).map((question) => Object.assign({}, question));
 
 const sortedAnsweredQuestions = answeredQuestions.sort((a, b) => b.timestamp - a.timestamp);
 console.log('sortedAnsweredQuestions : ',sortedAnsweredQuestions)
@@ -44,14 +50,14 @@ console.log('sortedUnannsweredQuestions : ',sortedUnannsweredQuestions)
     return (
         <div>
                 <div className="btn-group">
-                    <Button className={ !answered ? 'btn-selected' : 'btn-default'} onClick={this.handleChange(false)}>Unanswered Questions</Button>
-                    <Button className={ answered ? 'btn-selected' : 'btn-default'} onClick={this.handleChange(true)}>Answered Questions</Button>
+                    <Button className={ !answered ? 'selected' : 'btn-default'} onClick={this.handleClickUnanswered}>Unanswered Questions</Button>
+                    <Button className={ answered ? 'selected' : 'btn-default'} onClick={this.handleClickanswered}>Answered Questions</Button>
                 </div>
                 {answered?(
-                  sortedAnsweredQuestions.map(answeredQuestion=>  <QuestionInfo key={answeredQuestion.id}></QuestionInfo>)
+                  sortedAnsweredQuestions.map(answeredQuestion=>  <Question key={answeredQuestion.id} id={answeredQuestion.id} ></Question>)
 
                 ):(
-                    sortedUnannsweredQuestions.map(unansweredQuestion=>  <QuestionInfo key={unansweredQuestion.id}></QuestionInfo>)
+                    sortedUnannsweredQuestions.map(unansweredQuestion=>  <Question key={unansweredQuestion.id} id={unansweredQuestion.id}></Question>)
                 )}
 </div>
 
