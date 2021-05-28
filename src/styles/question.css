@@ -1,3 +1,5 @@
+.container
+{background-color: lightgrey;}
 .question-info-container
 {
     background-color: lightgrey;
@@ -66,13 +68,16 @@
 {
     background-color: transparent;
     width: 300px;
-    height:70px;
+    height:100px;
     float:right;
+    /*border: 1px solid #dddddd;
+	border-radius: 5px 5px 0px 0px;*/
+    margin-bottom: 20px;
 
 }
-answers-box img
+.answers-box img
 {
     float:right;
-    width:20px;
-    height:20px;
+    width:30px;
+    height:30px;
 }
