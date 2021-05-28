@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatDate } from '../utils/_DATA'
 import { Link } from 'react-router-dom'
-import '../css/question.css'
-import icon from '../images/project_icon.jpg'
+import '../styles/question.css'
+import { Button } from 'react-bootstrap'
 
 class Question extends Component {
   render() {
     const { question, author, questionId } = this.props
+    console.log('author: ',author)
 
     return (
       <div className="question-container">
@@ -18,9 +18,9 @@ class Question extends Component {
         <div className="question-body">
         <h4>Would You Rather...?</h4>
           <p>---{question.optionOne.text}---</p>
-          <div class="center">
+          <div className="center">
           <Link to={`/question/${questionId}`}>
-            <Button className="poll-button">View Poll</Button>
+            <Button className="poll-button">View </Button>
           </Link> 
           </div>
           </div>
@@ -30,6 +30,7 @@ class Question extends Component {
 }
 
 function mapStateToProps({ questions, users }, { id }) {
+  console.log('id :',id)
   const question = questions[id]
   const questionId = question.id
   const author = users[question.author]

@@ -1,5 +1,4 @@
 import React from 'react';
-import LoadingBar from 'react-redux-loading';
 import Nav from './Nav';
 import DashBoard from './DashBoard';
 import NewQuestion from './NewQuestion';
@@ -8,7 +7,7 @@ import Login from './Login';
 import PageNotFound from './PageNotFound';
 import LeaderBoard from './LeaderBoard';
 import {connect} from 'react-redux';
-import { Link,Route,Switch,BrowserRouter as Router } from 'react-router-dom';
+import {Route,Switch} from 'react-router-dom';
 import { handleInitialData } from '../actions/shared.action'
 
 
@@ -31,7 +30,7 @@ render(){
 <Route exact path="/home"><DashBoard /></Route>
 <Route exact path="/leaderboard"><LeaderBoard /></Route>
 <Route exact path="/add"> <NewQuestion /></Route>
-<Route  path='/question/:questionID'> <QuestionInfo /></Route>
+<Route  exact path='/question/:questionID'> <QuestionInfo /></Route>
 <Route  exact path="/not-found" > <PageNotFound /></Route>
  </Switch>
 

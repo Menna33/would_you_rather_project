@@ -30,8 +30,8 @@
     text-align: center;
   }
   .nav-img{
-      width:fit-content;
-      height:fit-content;
+      width:30px;
+      height:30px;
   }
   .navbar a:hover {
     background: #ddd;
