@@ -27,7 +27,7 @@ render(){
 (<div>
 
 <Switch>
-<Route exact path="/home"><DashBoard /></Route>
+<Route exact path="/"><DashBoard /></Route>
 <Route exact path="/leaderboard"><LeaderBoard /></Route>
 <Route exact path="/add"> <NewQuestion /></Route>
 <Route  exact path='/question/:questionID'> <QuestionInfo /></Route>

@@ -20,7 +20,7 @@ render(){
            
 <Navbar bg="primary" variant="dark">
 <ul className="navbar">
-             <NavLink to='/home'  activeClassName='active'
+             <NavLink to='/'  activeClassName='active'
                     className="nav-link">DashBoard</NavLink>
              <NavLink to='/add'  activeClassName='active'
                     className="nav-link">New Question</NavLink>
